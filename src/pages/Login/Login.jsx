@@ -1,5 +1,6 @@
 import React from 'react';
 import LoginForm from './LoginForm/LoginForm';
+import styles from './login.module.css'
 import { Route, Routes,Navigate } from 'react-router-dom'
 import LoginCreate from './Create/LoginCreate';
 import ResetPassword from './ResetPassWord/ResetPassword';
@@ -12,14 +13,17 @@ function Login() {
 
     if(login) return <Navigate to='/conta' />
     return (
-        <main>
+        <section className={styles.login}>
+            <div className={styles.forms}>
             <Routes>
                <Route path="/" element={<LoginForm/>} />
                <Route path="/create" element={<LoginCreate/>} />
                <Route path="/forgot" element={<ForgotPassword/>} />
                <Route path="/reset" element={<ResetPassword/>} />
             </Routes>
-        </main>
+            </div>
+          
+        </section>
     )
 }
 

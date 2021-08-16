@@ -1,10 +1,44 @@
 import React from 'react'
+import Button from '../../Components/Formulario/Button/Button'
+import Input from '../../Components/Formulario/Input/Input'
+import useForm from '../../../Hooks/useForm'
+import { USER_POST} from '../../../API/api'
+import { UserContext } from '../../../Hooks/Context/UserContext'
+import useFetch from '../../../Hooks/useFetch'
+import ParagrafoErro from '../../Components/Helpers/Errors/error'
 
 function LoginCreate() {
+    const username = useForm()
+    const email = useForm('email')
+    const password = useForm()
+
+    const {userLogin} = React.useContext(UserContext)
+   const {loading,error,request} = useFetch();
+
+   async  function handleSubmit(event){
+        event.preventDefault();
+        const {url,options} = USER_POST({
+            username:username.value,
+            email:email.value,
+            password:password.value
+        })
+        const {response} = await request(url, options)
+      if(response.ok)  userLogin(username.value,password.value)
+    }
     return (
-        <main>
-                <h3>login criar</h3>
-        </main>
+        <section className="animation-left">
+                <h3 className="title">Cadastre-se</h3>
+                <form onSubmit={handleSubmit}>
+                    <Input label="Usuario" type="text" name="username" {...username}/>
+                    <Input label="Email" type="email" name="email"  {...email}/>
+                    <Input label="Senha" type="password" name="password"  {...password}/>
+                    {loading? <Button disabled>Cadastrando...</Button> : <Button>Cadastrar</Button>}
+                    <ParagrafoErro error={error} />
+                    {console.log(error)}
+                </form>
+              
+             
+        </section>
     )
 }
 
