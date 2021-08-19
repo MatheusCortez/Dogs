@@ -1,6 +1,6 @@
 import React from 'react'
 import {TOKEN_POST,TOKEN_VALIDATE_POST,USER_GET} from '../../API/api'
-import {useNavigate} from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 
  export const UserContext = React.createContext();
@@ -9,26 +9,27 @@ import {useNavigate} from 'react-router-dom';
      const [data,setData] = React.useState(null);
      const[login,setLogin] = React.useState(null);
      const[loading,setLoading] = React.useState(false);
-     const[error,seterror] = React.useState(null);
+     const[error,setError] = React.useState(null);
     const navigate = useNavigate();
 
- const userLogout = React.useCallback( 
-     async function() {
-    setData(null);
-    seterror(null);
-    setLoading(false);
-    window.localStorage.removeItem('token');
-    console.log('passou logout')
-    navigate('/login')
-
-},[navigate])
+    const userLogout = React.useCallback(
+        async function () {
+          setData(null);
+          setError(null);
+          setLoading(false);
+          setLogin(false);
+          window.localStorage.removeItem('token');
+          navigate('/login');
+        },
+        [navigate],
+      );
 
 React.useEffect(()=>{
     async function autoLogin(){
         const token = window.localStorage.getItem('token');
         if(token){
             try {
-                seterror(null);
+                setError(null);
                 setLoading(true);
                 const {url,options} = TOKEN_VALIDATE_POST(token);
                 const response = await fetch(url,options);
@@ -40,6 +41,8 @@ React.useEffect(()=>{
                 setLoading(false)
             }
          
+        }else{
+            setLogin(false)
         }
     }
     autoLogin()
@@ -56,7 +59,7 @@ React.useEffect(()=>{
 
      async function userLogin(username,password){
          try {
-             seterror(null);
+            setError(null);
              setLoading(true);
             const {url,options} = TOKEN_POST({username,password });
             const tokenRes = await fetch(url,options);
@@ -66,7 +69,7 @@ React.useEffect(()=>{
             await getUser(token)
             navigate('/conta');
          } catch (error) {
-             seterror(error.message);
+            setError(error.message);
              setLogin(false);
          }finally{
             setLoading(false)
