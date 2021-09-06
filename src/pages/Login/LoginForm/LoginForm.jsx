@@ -7,6 +7,8 @@ import Input from "../../Components/Formulario/Input/Input";
 import {UserContext }from'../../../Hooks/Context/UserContext'
 import ParagrafoErro from "../../Components/Helpers/Errors/error";
 import StyleBtn from "../../Components/Formulario/Button/Button.module.css";
+import Head from "../../Components/Helpers/Head/Head";
+
 
 function LoginForm() {
   const username = useForm();
@@ -24,6 +26,7 @@ const {userLogin,error,loading} = React.useContext(UserContext)
   }
   return (
     <section className="animation-left">
+      <Head title="Login" />
       <h1 className="title">Login</h1>
       <form className={style.form} onSubmit={handleSubmit}>
         <Input label="Usúario" type="text" name="username" {...username} />

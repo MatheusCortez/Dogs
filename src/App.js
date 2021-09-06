@@ -17,6 +17,7 @@ function App() {
     <BrowserRouter className="App">
       <UserStorage>        
       <Header/>
+      <main className="AppBody">
       <Routes>
       <Route path="/" element={<Home/>}/>
 
@@ -26,6 +27,8 @@ function App() {
         <Route path="/perfil/:user" element={<UserProfile/>}/>
         <Route path="*" element={<NotFound/>}/>
       </Routes>
+      </main>
+    
     <Footer/>
     </UserStorage>
     </BrowserRouter>

@@ -7,11 +7,15 @@ import Feed from './Main/Feed/Feed'
 import UserPhotoPost from './Main/Postar/UserPhotoPost'
 import NotFound from '../Components/Helpers/NotFound/NotFound'
 import PropTypes from 'prop-types';
+import Head from '../Components/Helpers/Head/Head'
+
 
 function User() {
+  
     const {data} = React.useContext(UserContext)
     return (
         <section className="container">
+          <Head title="Minha Conta" />
             <Header/>
 
             <Routes>
