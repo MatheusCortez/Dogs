@@ -7,6 +7,7 @@ import ResetPassword from './ResetPassWord/ResetPassword';
 import ForgotPassword from './forgotPassword/ForgotPassword';
 import { UserContext } from '../../Hooks/Context/UserContext';
 
+import NotFound from '../Components/Helpers/NotFound/NotFound'
 
 function Login() {
     const {login} =  React.useContext(UserContext)
@@ -18,8 +19,9 @@ function Login() {
             <Routes>
                <Route path="/" element={<LoginForm/>} />
                <Route path="/create" element={<LoginCreate/>} />
-               <Route path="/forgot" element={<ForgotPassword/>} />
+               <Route path="/perdeu" element={<ForgotPassword/>} />
                <Route path="/reset" element={<ResetPassword/>} />
+               <Route path="*" element={<NotFound/>}/>
             </Routes>
             </div>
           

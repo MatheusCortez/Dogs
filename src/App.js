@@ -8,8 +8,9 @@ import Login from './pages/Login/Login';
 
 import {UserStorage} from './Hooks/Context/UserContext';
 import User from './pages/User/User';
-import ProtectedRoute from './pages/Components/Helpers/ProtectedRoute/ProtectedRoute';
 import Photo from './pages/Components/Photo/Photo';
+import UserProfile from './pages/User/Profile/UserProfile'
+import NotFound from './pages/Components/Helpers/NotFound/NotFound'
 
 function App() {
   return (
@@ -20,9 +21,10 @@ function App() {
       <Route path="/" element={<Home/>}/>
 
         <Route path="/login/*" element={<Login/>} />
-       
-        <ProtectedRoute path="/conta/*" element={<User/>}/>
-        <ProtectedRoute path="/foto/:id" element={<Photo/>}/>
+        <Route path="/conta/*" element={<User/>}/>
+        <Route path="/foto/:id" element={<Photo/>}/>
+        <Route path="/perfil/:user" element={<UserProfile/>}/>
+        <Route path="*" element={<NotFound/>}/>
       </Routes>
     <Footer/>
     </UserStorage>
