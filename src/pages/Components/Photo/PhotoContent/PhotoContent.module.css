@@ -1,5 +1,5 @@
 .photo{
-    margin: auto;
+    margin:  10rem;
     height: 36rem;
     border-radius: .2rem;
     background: #FFFF;
@@ -10,6 +10,11 @@
     opacity: 0;
     transform: scale(.8);
     animation: scaleUp .3s forwards;
+}
+.single.photo{
+    grid-template-columns: 1fr;
+    height: auto;
+    margin-top: 2rem;
 }
 
 @keyframes scaleUp{
@@ -23,15 +28,20 @@
     padding: 2rem 2rem 0 2rem;
 
 }
+.single .details{
+    padding: 2rem 0px 0px 0px;
+}
 
 .img{
     grid-row: 1/4;
 }
-
-.comments{
-    padding: 0 2rem;
-
+.single .img{
+    grid-row: 1;
+    border-radius: .4rem;
+    overflow: hidden;
 }
+
+
 
 @media screen and (max-width:64rem) {
     .photo{

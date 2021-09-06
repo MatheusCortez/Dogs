@@ -46,6 +46,7 @@ a{
     margin: 0 auto;
 }
 
+
 .animation-left{
     opacity: 0;
     transform: translateX(-20px);
