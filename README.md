@@ -14,7 +14,7 @@
 
 ### Projeto desenvolvido através do curso  **"REACT Completo"** através da plataforma de cursos da **Origamid** 
 
-### Site disponivel no link :https://projetodogsorigamid.netlify.app/login
+### Site disponivel no link :https://projetodogsorigamid.netlify.app/
 Podendo ser usado como usario de teste : dog e senha dog
 -----------------------------
 ## 📔 Temas Abordados no projeto:
